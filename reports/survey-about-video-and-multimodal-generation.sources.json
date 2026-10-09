@@ -1,0 +1,178 @@
+[
+  {
+    "n": 1,
+    "id": "N/A",
+    "url": "https://link.springer.com/article/10.1007/s10462-026-11525-6",
+    "title": "Generative AI for multimodal content: a survey with empirical and experimental evaluations",
+    "date": "2026-03-19",
+    "source": "web"
+  },
+  {
+    "n": 2,
+    "id": "2603.07455",
+    "url": "https://arxiv.org/abs/2603.07455",
+    "title": "Image Generation Models: A Technical History",
+    "date": "2026-03-08",
+    "source": "arxiv"
+  },
+  {
+    "n": 3,
+    "id": "2310.10647",
+    "url": "https://huggingface.co/papers/2310.10647",
+    "title": "A Survey on Video Diffusion Models",
+    "date": "2023-10-16",
+    "source": "hf-search"
+  },
+  {
+    "n": 4,
+    "id": "2510.04999",
+    "url": "https://arxiv.org/abs/2510.04999",
+    "title": "Bridging Text and Video Generation: A Survey",
+    "date": "2025-10-06",
+    "source": "arxiv"
+  },
+  {
+    "n": 5,
+    "id": "2501.00103",
+    "url": "https://huggingface.co/papers/2501.00103",
+    "title": "LTX-Video: Realtime Video Latent Diffusion",
+    "date": "2024-12-30",
+    "source": "hf-search"
+  },
+  {
+    "n": 6,
+    "id": "2610.09307",
+    "url": "https://arxiv.org/abs/2610.09307",
+    "title": "vLLM-Omni Technical Report: A Unified Serving Runtime for Omni-Modality Generation",
+    "date": "2026-10-07",
+    "source": "arxiv"
+  },
+  {
+    "n": 7,
+    "id": "2609.31847",
+    "url": "https://arxiv.org/abs/2609.31847",
+    "title": "Omni-IO Skills: Harnessing Your Agent Omni-Native",
+    "date": "2026-09-25",
+    "source": "arxiv"
+  },
+  {
+    "n": 8,
+    "id": "2609.21465",
+    "url": "https://arxiv.org/abs/2609.21465",
+    "title": "OmniVChat: Synthesizing, Benchmarking, and Training for Native Audio-Visual Dialogue",
+    "date": "2026-09-18",
+    "source": "arxiv"
+  },
+  {
+    "n": 9,
+    "id": "CVPR2024-Liu",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/papers/Liu_EvalCrafter_Benchmarking_and_Evaluating_Large_Video_Generation_Models_CVPR_2024_paper.pdf",
+    "title": "EvalCrafter: Benchmarking and Evaluating Large Video Generation Models",
+    "date": "2024",
+    "source": "web"
+  },
+  {
+    "n": 10,
+    "id": "http://dl.acm.org/doi/10.5555/3737916.3739955",
+    "url": "http://dl.acm.org/doi/10.5555/3737916.3739955",
+    "title": "T2VSafetyBench: Evaluating the safety of text-to-video generative models",
+    "date": "2024-12-10",
+    "source": "web"
+  },
+  {
+    "n": 11,
+    "id": "2506.10016",
+    "url": "https://arxiv.org/abs/2506.10016",
+    "title": "A Survey of Generative Categories and Techniques in Multimodal Generative Models",
+    "date": "2025-05-29",
+    "source": "arxiv"
+  },
+  {
+    "n": 12,
+    "id": "2412.18688",
+    "url": "https://arxiv.org/abs/2412.18688",
+    "title": "Video Is Worth a Thousand Images: Exploring the Latest Trends in Long Video Generation",
+    "date": "2024-12-24",
+    "source": "arxiv"
+  },
+  {
+    "n": 13,
+    "id": "2411.13503",
+    "url": "https://huggingface.co/papers/2411.13503",
+    "title": "VBench++: Comprehensive and Versatile Benchmark Suite for Video Generative Models",
+    "date": "2024-11-20",
+    "source": "hf-search"
+  },
+  {
+    "n": 14,
+    "id": "2510.17519",
+    "url": "https://huggingface.co/papers/2510.17519",
+    "title": "MUG-V 10B: High-efficiency Training Pipeline for Large Video Generation Models",
+    "date": "2025-10-20",
+    "source": "hf-search"
+  },
+  {
+    "n": 15,
+    "id": "N/A",
+    "url": "https://link.springer.com/article/10.1007/s11704-025-51171-9",
+    "title": "Next-Gen AIGC: a review of multimodal foundation models for text-to-media innovations",
+    "date": "2026-02-20",
+    "source": "web"
+  },
+  {
+    "n": 16,
+    "id": "N/A",
+    "url": "https://link.springer.com/article/10.1186/s40537-025-01314-3",
+    "title": "Text-to-video generators: a comprehensive survey",
+    "date": "2025-11-14",
+    "source": "web"
+  },
+  {
+    "n": 17,
+    "id": "2503.07598",
+    "url": "https://huggingface.co/papers/2503.07598",
+    "title": "VACE: All-in-One Video Creation and Editing",
+    "date": "2025-03-10",
+    "source": "hf-search"
+  },
+  {
+    "n": 18,
+    "id": "2405.20279",
+    "url": "https://huggingface.co/papers/2405.20279",
+    "title": "CV-VAE: A Compatible Video VAE for Latent Generative Video Models",
+    "date": "2024-05-30",
+    "source": "hf-search"
+  },
+  {
+    "n": 19,
+    "id": "2609.25707",
+    "url": "https://arxiv.org/abs/2609.25707",
+    "title": "Interactive TTS: Dynamic Speaking Style Adaptation for Expressive Speech Synthesis",
+    "date": "2026-09-22",
+    "source": "arxiv"
+  },
+  {
+    "n": 20,
+    "id": "2609.25738",
+    "url": "https://arxiv.org/abs/2609.25738",
+    "title": "OmniFysics-Nano-V2 Technical Report: Understanding the Physical World Across Modalities",
+    "date": "2026-09-22",
+    "source": "arxiv"
+  },
+  {
+    "n": 21,
+    "id": "2310.11440",
+    "url": "https://huggingface.co/papers/2310.11440",
+    "title": "EvalCrafter: Benchmarking and Evaluating Large Video Generation Models",
+    "date": "2023-10-17",
+    "source": "hf-search"
+  },
+  {
+    "n": 22,
+    "id": "2411.10234",
+    "url": "https://arxiv.org/abs/2411.10234",
+    "title": "Generative AI in Multimodal User Interfaces: Trends, Challenges, and Cross-Platform Adaptability",
+    "date": "2024-11-15",
+    "source": "arxiv"
+  }
+]

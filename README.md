@@ -1,109 +1,95 @@
 # Deep Research Agent (Deep Agents + Sandbox)
 
-Lab dựng một **hệ thống deep research đa tác tử**: người dùng chỉ cần nhập một chủ đề (ví dụ `survey about world model`), hệ thống tự lập kế hoạch, giao việc cho nhiều subagent, tìm tài liệu trên arXiv, Hugging Face và web, rồi viết một **báo cáo có trích dẫn**.
+Nhập một chủ đề, ví dụ `survey about world model`. Hệ thống sẽ tự lập kế hoạch, giao việc cho nhiều subagent tìm tài liệu trên arXiv, Hugging Face và web, rồi viết một **báo cáo khảo sát có trích dẫn kiểm chứng được**. Mọi `[n]` trong báo cáo đều trỏ tới một nguồn có thật trong `sources.json`.
 
-Hình thức: **bài thực hành cá nhân**. Ngôn ngữ lập trình: Python 3.11 trở lên.
+Đề bài gốc: [GUIDE.md](GUIDE.md), [RUBRIC.md](RUBRIC.md), [REPORT_TEMPLATE.md](REPORT_TEMPLATE.md).
 
-## 1. Mục tiêu học tập
-
-Sau lab, bạn có thể:
-
-1. Dựng agent bằng thư viện Deep Agents (LangChain): công cụ (tool), system prompt, subagent, backend.
-2. Dùng **sandbox** (Daytona) làm không gian làm việc và nơi chạy mã cho agent; hiểu vì sao khóa API và công cụ mạng phải nằm ở phía host chứ không nằm trong sandbox.
-3. Viết công cụ gọi API ngoài **chịu được giới hạn tốc độ** (retry, backoff, jitter, `Retry-After`).
-4. Thiết kế quy trình đa tác tử: lead chia nhỏ câu hỏi, giao cho N researcher chạy song song, tổng hợp và kiểm tra trích dẫn.
-5. Tạo báo cáo có thể kiểm chứng: mọi khẳng định có `[n]` trỏ tới một nguồn có thật.
-
-## 2. Hệ thống làm gì
+## Cách hệ thống chạy
 
 ```mermaid
 flowchart TD
-    U["python research.py &quot;survey about world model&quot;"] --> S["open_sandbox() - Daytona"]
-    S --> L["Lead agent: write_todos, chia N câu hỏi con"]
+    U["python research.py &quot;topic&quot;"] --> S["open_sandbox() - Daytona (hoặc Docker)"]
+    S --> L["Lead agent: write_todos, chia 3-5 câu hỏi con"]
     L -->|task x N, song song| R["researcher subagents"]
-    R --> T1["arxiv_search"]
-    R --> T2["hf_daily_papers / hf_search_papers"]
-    R --> T3["web_search / web_fetch (Exa MCP)"]
-    R --> N["ghi chú trong sandbox: /tmp/work/research/notes"]
-    N --> M["Lead gộp: sources.json + report.md"]
-    M --> F["execute: finalize_citations.py (có sẵn)"]
-    F --> V["execute: check_citations.py"]
-    V --> C["citation-checker subagent kiểm tra mẫu"]
-    C --> D["download -> reports/slug.md, .sources.json, .meta.json"]
+    R --> T["arxiv_search · hf_daily_papers · hf_search_papers · web_search · web_fetch (chạy ở host)"]
+    R --> N["ghi chú trong sandbox: /tmp/work/research/notes/NN-slug.md"]
+    N --> M["Lead gộp sources.json + viết thân report.md"]
+    M --> F["execute: finalize_citations.py → sinh ## References"]
+    F --> V["execute: check_citations.py → phải in OK"]
+    V --> C["citation-checker subagent kiểm tra mẫu 3-5 khẳng định"]
+    C --> D["download → reports/slug.md, .sources.json, .meta.json"]
 ```
 
-Nguồn dữ liệu:
-
-| Nguồn | Dùng để |
+| Tệp | Vai trò |
 |---|---|
-| arXiv API `https://export.arxiv.org/api/query` | Tìm bài theo từ khóa, sắp theo ngày |
-| Hugging Face Daily Papers `/api/daily_papers` | Bài đang "trending": upvotes, githubRepo, summary |
-| Hugging Face papers search `/api/papers/search?q=` | Tìm bài theo chủ đề |
-| Web qua Exa MCP (`web_search_exa`, `web_fetch_exa`) | Blog, survey, trang dự án, nội dung đầy đủ của một URL |
+| [tools.py](tools.py) | 5 công cụ nguồn dữ liệu và `with_retry` (backoff lũy thừa, jitter, `Retry-After`, trần `cap`) |
+| [agents.py](agents.py) | Prompt của lead, researcher, citation-checker; subagent; giới hạn vòng lặp và chi phí |
+| [research.py](research.py) | Script chính: mở sandbox, upload validator và finalizer, chạy agent, tải báo cáo về, ghi `meta.json` |
+| [check_citations.py](check_citations.py) | Validator trích dẫn, chạy **trong sandbox** (chỉ dùng thư viện chuẩn) |
+| [tests/test_lab.py](tests/test_lab.py) | Test offline, không gọi mạng hay LLM |
+| `model.py`, `sandbox.py`, `finalize_citations.py`, `self_check.py` | Có sẵn trong đề, không sửa |
 
-## 3. Cấu trúc thư mục
+## Cài đặt
 
-```
-Lab/
-├── README.md  GUIDE.md  RUBRIC.md  REPORT_TEMPLATE.md   tài liệu
-├── topics.md                 5 chủ đề cần chạy
-├── requirements.txt  .env.example  .gitignore
-├── model.py                  CÓ SẴN - không sửa: tạo mô hình LLM từ biến môi trường
-├── sandbox.py                CÓ SẴN - không sửa: sandbox Daytona (hoặc Docker), upload, download
-├── self_check.py             CÓ SẴN - không sửa: tự kiểm tra trước khi nộp (python self_check.py)
-├── finalize_citations.py     CÓ SẴN - không sửa: script chạy trong sandbox, tự sinh `## References` và đánh số lại trích dẫn
-├── tools.py                  SINH VIÊN CÀI ĐẶT: retry + 5 công cụ nguồn dữ liệu
-├── agents.py                 SINH VIÊN CÀI ĐẶT: prompt, subagent, lead agent
-├── research.py               SINH VIÊN CÀI ĐẶT: script chính
-├── check_citations.py        SINH VIÊN CÀI ĐẶT: kiểm tra trích dẫn, chạy TRONG sandbox
-└── reports/                  báo cáo sinh ra (bạn commit vào repo nộp)
-```
-
-Mỗi tệp "SINH VIÊN CÀI ĐẶT" là **pseudo-code chạy được** (import được): các hàm có docstring mô tả việc cần làm, các `TODO n` đánh số theo `GUIDE.md`, thân hàm đang `raise NotImplementedError`.
-
-## 4. Cài đặt
+Cần Python 3.11 trở lên.
 
 ```bash
-python3 -m venv .venv && source .venv/bin/activate      # Python 3.11+
+python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env                                     # rồi điền khóa CỦA BẠN
+cp .env.example .env        # rồi điền khóa của bạn; KHÔNG commit .env (đã có trong .gitignore)
 ```
 
-Bạn cần ba loại khóa (điền vào `.env`, **không bao giờ commit** `.env`):
+Các biến trong `.env`:
 
-| Khóa | Lấy ở đâu | Ghi chú |
+| Biến | Bắt buộc | Ghi chú |
 |---|---|---|
-| LLM (`LAB_MODEL` + khóa nhà cung cấp) | Nhà cung cấp bạn chọn (OpenAI, Anthropic, Google, OpenRouter, Ollama...) | Mô hình **phải hỗ trợ tool calling**. Chép tên mô hình từ tài liệu của nhà cung cấp. |
-| `DAYTONA_API_KEY` | https://app.daytona.io | Kiểm tra gói miễn phí / credit hiện hành. Không có tài khoản hoặc hết credit: đặt `SANDBOX=docker` để chạy sandbox trong container Docker cục bộ (xem `.env.example`). |
-| `EXA_API_KEY` (khuyến nghị) | https://dashboard.exa.ai/api-keys | Có thể chạy không khóa, nhưng bản miễn phí của MCP bị giới hạn tốc độ rất nhanh. |
+| `LAB_MODEL` + khóa nhà cung cấp | ✅ | Ví dụ `LAB_MODEL=openai:gpt-4.1-mini` và `OPENAI_API_KEY=...` (các báo cáo trong `reports/` được tạo bằng model này). Dùng Gemini: `google_genai:<model>` và `GOOGLE_API_KEY`. Dùng OpenRouter hoặc endpoint tương thích OpenAI khác: `LAB_BASE_URL` + `LAB_MODEL` + `LAB_API_KEY`. Mô hình phải hỗ trợ tool calling. |
+| `DAYTONA_API_KEY` | ✅ (hoặc Docker) | Lấy tại https://app.daytona.io. Không dùng Daytona thì đặt `SANDBOX=docker` để chạy sandbox trong container cục bộ. |
+| `EXA_API_KEY` | Nên có | Lấy tại https://dashboard.exa.ai/api-keys. Không có khóa thì bản miễn phí của Exa hết quota rất nhanh. |
 
-## 5. Làm bài
+Gói miễn phí của các nhà cung cấp LLM thường không đủ: Gemini free chỉ cho 20 request/ngày, trong khi một chủ đề cần khoảng 100–200 lời gọi model.
 
-Làm theo thứ tự (chi tiết trong `GUIDE.md`):
-
-1. `check_citations.py`: khởi động nhẹ, thuần Python.
-2. `tools.py`: viết `with_retry` và 5 công cụ. Thử riêng từng công cụ: `python tools.py`.
-3. `agents.py`: viết prompt, subagent và lead agent.
-4. `research.py`: ghép tất cả; chạy một chủ đề:
+## Chạy
 
 ```bash
-python research.py "survey about world model"
+python tools.py                                    # thử riêng 5 công cụ với API thật
+python research.py "survey about world model"      # chạy một chủ đề (khoảng 4–13 phút)
+python self_check.py                               # kiểm tra 5 báo cáo trước khi nộp (không tốn token)
+pip install pytest && python -m pytest -q          # test offline
 ```
 
-Kết quả nằm ở `reports/survey-about-world-model.md` cùng `.sources.json` và `.meta.json`.
+Trong lúc chạy, `research.py` in ra stderr từng tool call của lead, cùng kết quả của finalizer và validator. Chạy hỏng (lỗi model, không có báo cáo, `sources.json` hỏng) thì thoát với mã 1 và **không ghi file nào**. Sandbox luôn được dừng và xóa, kể cả khi lỗi.
 
-## 6. Chủ đề và nộp bài
+Các chủ đề chạy độc lập với nhau: muốn chạy lại chủ đề nào thì chỉ cần chạy lại lệnh của chủ đề đó, các báo cáo khác không bị ảnh hưởng.
 
-- Chạy đủ **5 chủ đề** trong [`topics.md`](topics.md), mỗi chủ đề một lần.
-- Commit mã nguồn và toàn bộ `reports/`, đẩy lên một **public repo** GitHub và nộp link.
-- Kiểm tra trước khi nộp: chạy **`python self_check.py`** (không tốn token): nó kiểm tra đủ 5 báo cáo, `meta.json`, trích dẫn bằng `check_citations.py` của bạn, và không có `.env`/khóa nào trong git.
-- Cách chấm: xem [`RUBRIC.md`](RUBRIC.md).
+## Đọc `reports/`
 
-## 7. Thời gian, chi phí và an toàn
+Mỗi chủ đề trong [topics.md](topics.md) có ba tệp, đặt tên theo slug của chủ đề (ví dụ `survey-about-world-model`):
 
-- Dùng một mô hình **rẻ nhưng hỗ trợ tool calling**, và **đặt giới hạn** (số lần gọi mô hình/công cụ cho lead và subagent, `recursion_limit`): một prompt hỏng có thể khiến agent lặp rất lâu. Đây là hạng mục 2.5 của `RUBRIC.md`.
-- Kết quả có tính ngẫu nhiên: cùng một mã có thể cho báo cáo hợp lệ ở lần này và trích dẫn lỗi ở lần sau. Hãy sửa **prompt và mã**, không sửa tay báo cáo.
+| Tệp | Nội dung |
+|---|---|
+| `<slug>.md` | Báo cáo tiếng Anh theo [REPORT_TEMPLATE.md](REPORT_TEMPLATE.md): TL;DR, Background, 3–6 phần theo chủ đề, Trends and open problems, References. Mỗi `[n]` trỏ tới dòng `[n]` trong `## References`. |
+| `<slug>.sources.json` | Danh sách nguồn `{n, id, url, title, date, source}`. `source` là công cụ đã tìm ra nguồn: `arxiv`, `hf-daily`, `hf-search` hoặc `web`. |
+| `<slug>.meta.json` | Bằng chứng của lần chạy: `model`, `elapsed_s`, `subagent_calls` (số lần lead gọi `task`), `tool_calls`, `tokens` (chỉ tin nhắn của lead), `tokens_all` (mọi lời gọi model, gồm cả subagent: đây là chi phí thật), `n_sources`, `source_families`. |
 
-- Mỗi lần chạy tốn token LLM và thời gian sandbox. `tokens` trong `meta.json` chỉ đếm tin nhắn của lead, chưa gồm subagent, nên chi phí thật cao hơn. `open_sandbox()` luôn dừng và xóa sandbox khi kết thúc, kể cả khi lỗi. Đừng bỏ qua nó.
-- **Không đưa bí mật vào sandbox.** Sandbox không ngăn được prompt injection hay việc đẩy dữ liệu ra mạng; một trang web độc hại có thể khiến agent chạy lệnh bên trong sandbox. Vì vậy mọi công cụ gọi mạng và mọi khóa ở lại phía host.
-- Nội dung lấy từ web là **dữ liệu không đáng tin**: agent không được làm theo chỉ dẫn nằm trong đó.
+Tệp `.md` và `.sources.json` được ghi **đúng từng byte** như bản tải về từ sandbox, không qua bước sửa nào ở host. Kiểm tra một báo cáo:
+
+```bash
+python3 check_citations.py reports/<slug>.md reports/<slug>.sources.json   # phải in "OK: N sources, all citations resolve"
+```
+
+## Các quyết định thiết kế
+
+- **Khóa API ở lại host.** Mọi công cụ gọi mạng chạy ở host; sandbox (Daytona chặn mạng, ephemeral) chỉ chứa ghi chú, báo cáo và các script kiểm tra. Khóa Exa gửi qua header `Authorization` chứ không đặt trong URL, và luôn được che trước khi trả lỗi cho agent.
+- **Giới hạn tốc độ.** arXiv: các lần gọi cách nhau ít nhất 3 giây kể cả khi nhiều researcher chạy song song; khi arXiv vẫn trả 429 sau mọi lần retry thì tạm bỏ qua nó 10 phút. Exa báo hết quota theo 3 cách khác nhau (HTTP 429, lỗi JSON-RPC, cờ `result._meta` trong phản hồi HTTP 200), cả ba đều được phát hiện và retry; quota theo ngày đã hết thì báo lỗi ngay chứ không retry vô ích.
+- **Giới hạn vòng lặp và chi phí** (RUBRIC 2.5):
+  - Lead: tối đa 120 lần gọi model và 250 lần gọi tool, `recursion_limit=1000`.
+  - Mỗi researcher: 30 lần gọi model, 50 lần gọi tool. Citation-checker: 15 và 20.
+  - `deepagents` tự thêm một subagent `general-purpose` không giới hạn; bản này ghi đè nó bằng một bản có giới hạn.
+  - Lỗi tạm thời của API LLM (503, 429, timeout) được retry có backoff. Lỗi của tool trả về cho agent dạng `ERROR: ...` thay vì làm sập cả lần chạy.
+- **Trích dẫn đúng nhờ code, không chỉ nhờ prompt.** `finalize_citations.py` sinh `## References`. `check_citations.py` kiểm tra đủ các quy tắc của GUIDE Phần 4 (hiểu cả trích dẫn nhóm `[1, 2]` và `[1-3]`), cộng thêm các quy tắc chặt hơn:
+  - URL phải khớp họ nguồn được gắn nhãn (`arxiv` → `https://arxiv.org/abs/...`).
+  - Đoạn văn dài phải có ít nhất một `[n]`.
+  - Khi chạy trong sandbox: mỗi URL phải xuất hiện nguyên văn trong ghi chú của researcher (lead không thể bịa hay tự sửa URL), báo cáo phải dùng ít nhất 3 họ nguồn, và có 3–6 phần chủ đề.
+
+  Lead chỉ kết thúc khi validator in `OK`.

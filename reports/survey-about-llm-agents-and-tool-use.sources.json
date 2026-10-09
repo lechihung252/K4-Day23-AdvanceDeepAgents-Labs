@@ -1,0 +1,130 @@
+[
+  {
+    "n": 1,
+    "id": "https://www.anthropic.com/engineering/building-effective-agents",
+    "url": "https://www.anthropic.com/engineering/building-effective-agents",
+    "title": "Building Effective AI Agents - Anthropic",
+    "date": "2024-12-19",
+    "source": "web"
+  },
+  {
+    "n": 2,
+    "id": "2602.12430",
+    "url": "https://huggingface.co/papers/2602.12430",
+    "title": "Agent Skills for Large Language Models: Architecture, Acquisition, Security, and the Path Forward",
+    "date": "2026-02-12",
+    "source": "hf-search"
+  },
+  {
+    "n": 3,
+    "id": "2602.20867",
+    "url": "https://huggingface.co/papers/2602.20867",
+    "title": "SoK: Agentic Skills -- Beyond Tool Use in LLM Agents",
+    "date": "2026-02-24",
+    "source": "hf-search"
+  },
+  {
+    "n": 4,
+    "id": "2603.22386",
+    "url": "https://huggingface.co/papers/2603.22386",
+    "title": "From Static Templates to Dynamic Runtime Graphs: A Survey of Workflow Optimization for LLM Agents",
+    "date": "2026-03-23",
+    "source": "hf-search"
+  },
+  {
+    "n": 5,
+    "id": "2401.17167",
+    "url": "https://arxiv.org/abs/2401.17167",
+    "title": "Planning, Creation, Usage: Benchmarking LLMs for Comprehensive Tool Utilization in Real-World Complex Scenarios",
+    "date": "2024-06-03",
+    "source": "arxiv"
+  },
+  {
+    "n": 6,
+    "id": "https://survey.stackoverflow.co/2026/ai/data",
+    "url": "https://survey.stackoverflow.co/2026/ai/data",
+    "title": "AI data 2026 | Stack Overflow Developer Survey",
+    "date": "n.d.",
+    "source": "web"
+  },
+  {
+    "n": 7,
+    "id": "085185ea97db31ae6dcac7497616fd3e-Paper-Datasets_and_Benchmarks_Track.pdf",
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2024/file/085185ea97db31ae6dcac7497616fd3e-Paper-Datasets_and_Benchmarks_Track.pdf",
+    "title": "TaskBench: Benchmarking Large Language Models for Task Automation",
+    "date": "n.d.",
+    "source": "web"
+  },
+  {
+    "n": 8,
+    "id": "2606.22388",
+    "url": "https://huggingface.co/papers/2606.22388",
+    "title": "PlanBench-XL: Evaluating Long-Horizon Planning of LLM Tool-Use Agents in Large-Scale Tool Ecosystems",
+    "date": "2026-06-21",
+    "source": "hf-search"
+  },
+  {
+    "n": 9,
+    "id": "2510.20036",
+    "url": "https://huggingface.co/papers/2510.20036",
+    "title": "ToolScope: Enhancing LLM Agent Tool Use through Tool Merging and Context-Aware Filtering",
+    "date": "2026-05-08",
+    "source": "hf-search"
+  },
+  {
+    "n": 10,
+    "id": "2512.24565",
+    "url": "https://huggingface.co/papers/2512.24565",
+    "title": "MCPAgentBench: A Real-world Task Benchmark for Evaluating LLM Agent MCP Tool Use",
+    "date": "2026-01-21",
+    "source": "hf-search"
+  },
+  {
+    "n": 11,
+    "id": "2505.16700",
+    "url": "https://huggingface.co/papers/2505.16700",
+    "title": "MCP-RADAR: A Multi-Dimensional Benchmark for Evaluating Tool Use Capabilities in Large Language Models",
+    "date": "2025-05-22",
+    "source": "hf-search"
+  },
+  {
+    "n": 12,
+    "id": "https://rethinkpriorities.org/wp-content/uploads/2025/07/LLM-industry-survey.pdf",
+    "url": "https://rethinkpriorities.org/wp-content/uploads/2025/07/LLM-industry-survey.pdf",
+    "title": "LLM industry survey (Rethink Priorities)",
+    "date": "n.d.",
+    "source": "web"
+  },
+  {
+    "n": 13,
+    "id": "2601.01498",
+    "url": "https://huggingface.co/papers/2601.01498",
+    "title": "From Failure to Mastery: Generating Hard Samples for Tool-use Agents",
+    "date": "2026-01-04",
+    "source": "hf-search"
+  },
+  {
+    "n": 14,
+    "id": "2602.20426",
+    "url": "https://huggingface.co/papers/2602.20426",
+    "title": "Learning to Rewrite Tool Descriptions for Reliable LLM-Agent Tool Use",
+    "date": "2026-02-23",
+    "source": "hf-search"
+  },
+  {
+    "n": 15,
+    "id": "2603.12740",
+    "url": "https://huggingface.co/papers/2603.12740",
+    "title": "ToolTree: Efficient LLM Agent Tool Planning via Dual-Feedback Monte Carlo Tree Search and Bidirectional Pruning",
+    "date": "2026-03-13",
+    "source": "hf-search"
+  },
+  {
+    "n": 16,
+    "id": "2602.19218",
+    "url": "https://huggingface.co/papers/2602.19218",
+    "title": "Gecko: A Simulation Environment with Stateful Feedback for Refining Agent Tool Calls",
+    "date": "2026-02-22",
+    "source": "hf-search"
+  }
+]

@@ -1,0 +1,138 @@
+[
+  {
+    "n": 1,
+    "id": "2509.08827",
+    "url": "https://arxiv.org/abs/2509.08827",
+    "title": "A Survey of Reinforcement Learning for Large Reasoning Models",
+    "date": "n.d.",
+    "source": "arxiv"
+  },
+  {
+    "n": 2,
+    "id": "https://dl.acm.org/doi/10.1145/3729218",
+    "url": "https://dl.acm.org/doi/10.1145/3729218",
+    "title": "A Survey of Reasoning with Foundation Models: Concepts, Methodologies, and Outlook",
+    "date": "2025-06-12",
+    "source": "web"
+  },
+  {
+    "n": 3,
+    "id": "2508.00410",
+    "url": "https://huggingface.co/papers/2508.00410",
+    "title": "Co-Reward: Self-supervised Reinforcement Learning for Large Language Model Reasoning via Contrastive Agreement",
+    "date": "2025-08-01",
+    "source": "hf-search"
+  },
+  {
+    "n": 4,
+    "id": "2602.20722",
+    "url": "https://huggingface.co/papers/2602.20722",
+    "title": "Buffer Matters: Unleashing the Power of Off-Policy Reinforcement Learning in Large Language Model Reasoning",
+    "date": "2026-03-16",
+    "source": "hf-search"
+  },
+  {
+    "n": 5,
+    "id": "2504.00829",
+    "url": "https://huggingface.co/papers/2504.00829",
+    "title": "How Difficulty-Aware Staged Reinforcement Learning Enhances LLMs' Reasoning Capabilities: A Preliminary Experimental Study",
+    "date": "2025-04-01",
+    "source": "hf-search"
+  },
+  {
+    "n": 6,
+    "id": "2504.20571",
+    "url": "https://huggingface.co/papers/2504.20571",
+    "title": "Reinforcement Learning for Reasoning in Large Language Models with One Training Example",
+    "date": "2025-04-29",
+    "source": "hf-search"
+  },
+  {
+    "n": 7,
+    "id": "2506.01710",
+    "url": "https://huggingface.co/papers/2506.01710",
+    "title": "Reasoning-Table: Exploring Reinforcement Learning for Table Reasoning",
+    "date": "2025-06-02",
+    "source": "hf-search"
+  },
+  {
+    "n": 8,
+    "id": "2503.16252",
+    "url": "https://huggingface.co/papers/2503.16252",
+    "title": "Fin-R1: A Large Language Model for Financial Reasoning through Reinforcement Learning",
+    "date": "2025-03-20",
+    "source": "hf-search"
+  },
+  {
+    "n": 9,
+    "id": "2510.01857",
+    "url": "https://huggingface.co/papers/2510.01857",
+    "title": "Learning Reasoning Reward Models from Expert Demonstration via Inverse Reinforcement Learning",
+    "date": "2025-10-02",
+    "source": "hf-search"
+  },
+  {
+    "n": 10,
+    "id": "2412.10400",
+    "url": "https://arxiv.org/html/2412.10400v1",
+    "title": "Reinforcement Learning Enhanced LLMs: A Survey",
+    "date": "2024-12-05",
+    "source": "web"
+  },
+  {
+    "n": 11,
+    "id": "2404.00282",
+    "url": "https://arxiv.org/pdf/2404.00282",
+    "title": "LLM-Enhanced Reinforcement Learning: A Survey",
+    "date": "n.d.",
+    "source": "web"
+  },
+  {
+    "n": 12,
+    "id": "2602.00983",
+    "url": "https://huggingface.co/papers/2602.00983",
+    "title": "DISPO: Enhancing Training Efficiency and Stability in Reinforcement Learning for Large Language Model Mathematical Reasoning",
+    "date": "2026-02-01",
+    "source": "hf-search"
+  },
+  {
+    "n": 13,
+    "id": "2610.11502",
+    "url": "https://arxiv.org/abs/2610.11502",
+    "title": "Fed-GRPO: Reward-Signal-Driven Federated Group Relative Policy Optimization",
+    "date": "2026-10-08",
+    "source": "arxiv"
+  },
+  {
+    "n": 14,
+    "id": "2602.21628",
+    "url": "https://huggingface.co/papers/2602.21628",
+    "title": "RuCL: Stratified Rubric-Based Curriculum Learning for Multimodal Large Language Model Reasoning",
+    "date": "2026-02-25",
+    "source": "hf-search"
+  },
+  {
+    "n": 15,
+    "id": "2610.11854",
+    "url": "https://arxiv.org/abs/2610.11854",
+    "title": "GRPODropout: Less is More for Online Reinforcement Learning Rollouts",
+    "date": "2026-10-08",
+    "source": "arxiv"
+  },
+  {
+    "n": 16,
+    "id": "2610.11373",
+    "url": "https://arxiv.org/abs/2610.11373",
+    "title": "From a Prompt to Repertoires: Evolving Functional REpertoires Enable LLM Continual Learning",
+    "date": "2026-10-08",
+    "source": "arxiv"
+  },
+  {
+    "n": 17,
+    "id": "2505.24864",
+    "url": "https://huggingface.co/papers/2505.24864",
+    "title": "ProRL: Prolonged Reinforcement Learning Expands Reasoning Boundaries in Large Language Models",
+    "date": "2025-05-30",
+    "source": "hf-search"
+  }
+]

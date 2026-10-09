@@ -1,0 +1,90 @@
+[
+  {
+    "n": 1,
+    "id": "2604.22748",
+    "url": "https://arxiv.org/html/2604.22748v1",
+    "title": "Agentic World Modeling: Foundations, Capabilities, Laws, and Beyond",
+    "date": "2026-04-24",
+    "source": "web"
+  },
+  {
+    "n": 2,
+    "id": "https://dl.acm.org/doi/10.1145/3746449",
+    "url": "https://dl.acm.org/doi/10.1145/3746449",
+    "title": "Understanding World or Predicting Future? A Comprehensive Survey of World Models | ACM Computing Surveys",
+    "date": "2025-09-09",
+    "source": "web"
+  },
+  {
+    "n": 3,
+    "id": "2606.30292",
+    "url": "https://huggingface.co/papers/2606.30292",
+    "title": "DreamForge-World 0.1 Preview: A Low-Compute Real-Time Controllable World Model",
+    "date": "2026-06-29",
+    "source": "hf-search"
+  },
+  {
+    "n": 4,
+    "id": "2606.00133",
+    "url": "https://arxiv.org/abs/2606.00133",
+    "title": "World Models: A Comprehensive Survey of ...",
+    "date": "2026-06-01",
+    "source": "web"
+  },
+  {
+    "n": 5,
+    "id": "https://world-models.io/en/research/world-models-survey/",
+    "url": "https://world-models.io/en/research/world-models-survey/",
+    "title": "World Models Survey | Comprehensive Overview",
+    "date": "n.d.",
+    "source": "web"
+  },
+  {
+    "n": 6,
+    "id": "2608.23070",
+    "url": "https://huggingface.co/papers/2608.23070",
+    "title": "From Generation to Simulation: How Far Are World Models from Being True Simulators?",
+    "date": "2026-08-24",
+    "source": "hf-search"
+  },
+  {
+    "n": 7,
+    "id": "2610.12459",
+    "url": "https://huggingface.co/papers/2610.12459",
+    "title": "WorldGuide: Goal-Directed Video World Model for Procedural Task Execution",
+    "date": "2026-10-08",
+    "source": "hf-daily"
+  },
+  {
+    "n": 8,
+    "id": "https://world-models.io/reports/state-of-world-models-2026/",
+    "url": "https://world-models.io/reports/state-of-world-models-2026/",
+    "title": "State of World Models 2026 | Landscape Report",
+    "date": "n.d.",
+    "source": "web"
+  },
+  {
+    "n": 9,
+    "id": "2609.27656",
+    "url": "https://huggingface.co/papers/2609.27656",
+    "title": "InternW0: A Foundational Physical World Model for Efficient Real-World Interactions",
+    "date": "2026-09-23",
+    "source": "hf-search"
+  },
+  {
+    "n": 10,
+    "id": "https://world-models.io/reports/state-of-world-models-2026/state-of-world-models-2026-v1.0.pdf",
+    "url": "https://world-models.io/reports/state-of-world-models-2026/state-of-world-models-2026-v1.0.pdf",
+    "title": "State of World Models 2026: Taxonomy, Benchmarks and Open Challenges",
+    "date": "n.d.",
+    "source": "web"
+  },
+  {
+    "n": 11,
+    "id": "2607.17973",
+    "url": "https://huggingface.co/papers/2607.17973",
+    "title": "SAGE: Subgoal-Conditioned Action Generation for Latent World Model Planning",
+    "date": "2026-07-20",
+    "source": "hf-search"
+  }
+]
